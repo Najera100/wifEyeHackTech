@@ -1,15 +1,14 @@
 {
   "manifest_version": 2,
-
   "name": "Wif-eye",
-  "description": "This extension will ...",
+  "description": "This extension will be you beloved privacy guard",
   "version": "1.0",
-
   "browser_action": {
-   "default_icon": "icon.gif",
-   "default_popup": "popup.html"
+    "default_icon": "icon.gif",
+    "default_popup_dontuseit": "popup.html"
   },
-  "permissions": [
-   "activeTab"
-   ]
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [ "webNavigation", "webRequest", "webRequestBlocking", "cookies", "tabs", "http://*/*", "https://*/*", "storage" ]
 }
