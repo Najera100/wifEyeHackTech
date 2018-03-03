@@ -1,7 +1,8 @@
-#map {
-  height: 92%;
-  width: 31%;
- }
+body {
+	margin: 20px;
+  height: 400px;
+  width: 400px;
+}
 
 #title {
 	/*color: white; */
@@ -11,18 +12,3 @@
 	margin-bottom: 0;
 }
 
-
-.view {
-	display:inline-block;
-
-}
-
-.highlight {
-	stroke-width: 4;
-	stroke: orange;
-}
-
-.invert {
-	 filter: opacity(50%);
-	 -webkit-filter: opacity(50%);
-}
