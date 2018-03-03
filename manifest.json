@@ -8,7 +8,18 @@
     "default_popup_dontuseit": "popup.html"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": [
+      "background.js"
+    ]
   },
-  "permissions": [ "webNavigation", "webRequest", "webRequestBlocking", "cookies", "tabs", "http://*/*", "https://*/*", "storage" ]
+  "permissions": [
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "cookies",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "storage"
+  ]
 }
