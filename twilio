@@ -1,0 +1,11 @@
+var twilio = require('twilio'); // require twilio to be installed
+ 
+// Ryan Pisuena's Twilio info. Replace with your own if you want.
+var client = new twilio('AC0a0ab5d4ce7a1b294903eb953565ed6c', '30ecb6e9e255e3d8a11fcf19809d1bd3');
+ 
+// Send the text message.
+client.messages.create({
+  to: '442-226-9320',
+  from: '442-245-3436',
+  body: 'Alert! ------- Cookie has attempted t0 ---------'
+});
