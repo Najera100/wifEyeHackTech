@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Wif-eye",
+  "description": "This extension will ...",
+  "version": "1.0",
+
+  "browser_action": {
+   "default_icon": "icon.gif",
+   "default_popup": "popup.html"
+  },
+  "permissions": [
+   "activeTab"
+   ]
+}
