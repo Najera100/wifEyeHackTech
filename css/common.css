@@ -1,28 +1,5 @@
-#map {
-  height: 92%;
-  width: 31%;
- }
-
-#title {
-	/*color: white; */
-} 
-
-.breadcrumb {
-	margin-bottom: 0;
+html,body {
+	width: 500px;
+	height: 500px;;
 }
 
-
-.view {
-	display:inline-block;
-
-}
-
-.highlight {
-	stroke-width: 4;
-	stroke: orange;
-}
-
-.invert {
-	 filter: opacity(50%);
-	 -webkit-filter: opacity(50%);
-}
