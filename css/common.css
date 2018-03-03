@@ -1,5 +1,14 @@
-html,body {
-	width: 500px;
-	height: 500px;;
+body {
+	margin: 20px;
+  height: 500px;
+  width: 500px;
+}
+
+#title {
+	/*color: white; */
+} 
+
+.breadcrumb {
+	margin-bottom: 0;
 }
 
