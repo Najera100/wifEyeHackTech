@@ -165,6 +165,11 @@ chrome.tabs.getSelected(null, function(tab) {
       setTimeout(function() {
       	console.log(domains);
       	console.log(domainCounts);
+      	if($.isEmptyObject(domainCounts)) {
+      		d3.select('#tab_current').remove();
+      		d3.select('#tab_no_cookie').attr("hidden", false);
+      		return;
+      	}
       	var chart = c3.generate({
       			bindto: '#donutchart',
 				    data: {
