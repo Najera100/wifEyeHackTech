@@ -174,7 +174,7 @@ chrome.tabs.getSelected(null, function(tab) {
       	console.log(domainCounts);
       	if($.isEmptyObject(domainCounts)) {
       		d3.select('#tab_current').remove();
-      		d3.select('#tab_no_cookie').attr("hidden", false);
+      		d3.select('#tab_no_cookie').attr("hidden", null);
       		return;
       	}
       	var chart = c3.generate({
