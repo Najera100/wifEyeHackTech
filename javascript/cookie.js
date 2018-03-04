@@ -26,21 +26,21 @@ myid = [];
    chrome.cookies.getAll({ name: name }, (info) => {
       myid.push(info);
       info.forEach(it => {
-         console.log(it.name, it.value, it.domain);
+         // console.log(it.name, it.value, it.domain);
       });
    });
 });
 
-chrome.cookies.getAll({ url: "https://google.com" }, (info) => { console.log(info) })
+//chrome.cookies.getAll({ url: "https://google.com" }, (info) => { console.log(info) })
 
 chrome.cookies.onChanged.addListener(function (info) {
-   console.log(info);
+   // console.log(info);
    //TODO pass info use chrome.sendmessage
 });
 
 chrome.cookies.getAllCookieStores((cks_arr) => {
    for (i in cks_arr) {
-      console.log(cks_arr[i]);
+      //console.log(cks_arr[i]);
    }
 });
 
