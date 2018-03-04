@@ -3,6 +3,12 @@ function binarySplit(s, sep) {
 	return [s.substring(0, i), s.substring(i+1)];
 }
 
+function getHostname(s) {
+	var t = document.createElement('a');
+  t.href = s;
+  return t.hostname;
+}
+
 function getCookieKeyValuePair(request) {
 	return request.split('; ').map(function(d) {
 		return binarySplit(d, '=');
@@ -11,8 +17,10 @@ function getCookieKeyValuePair(request) {
 
 
 chrome.tabs.getSelected(null, function(tab) {
-      console.log('log');
+			var domains = new Set();
       console.log(tab);
+      var currentTabHostname = getHostname(tab.url);
+      console.log(currentTabHostname);
 			     	
       chrome.runtime.onMessage.addListener(
 			  function(request, sender, sendResponse) {
@@ -29,17 +37,21 @@ chrome.tabs.getSelected(null, function(tab) {
 				  	}, function(cookiesThatMatchKey) {
 							for (i in cookiesThatMatchKey) {
 								var cookie = cookiesThatMatchKey[i];
-								if(cookie.value == value) {
+								if(cookie.value == value)
 									console.log(cookie);
+								// if cookie matches the key-value pair and it's hostname is not the current tab's hostname
+								if(cookie.value == value && !currentTabHostname.includes(cookie.domain) && !cookie.domain.includes(currentTabHostname)) {
+									domains.add(cookie.domain);
 								}
+
 							}
 				  	});
 				  });
-			  
-			  	request.split(' ').map(function(kv) {
+			  	
+			  	/*request.split(' ').map(function(kv) {
 				  	d3.select('#content').append('p')
 				  		.text(kv);
-			  	});
+			  	});*/
 			  }
 			);
 
@@ -49,4 +61,11 @@ chrome.tabs.getSelected(null, function(tab) {
 				});
       `});
 
+      setTimeout(function() {
+      	console.log(domains);
+      	domains.forEach(function(domain) {
+	      	d3.select('#content').append('p')
+					  .text(domain);
+				});
+      }, 1000);
 });
