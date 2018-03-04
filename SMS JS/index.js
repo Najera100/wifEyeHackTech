@@ -68,3 +68,7 @@ function handler(req, resp){
         //}
 
 }
+
+http.createServer(handler).listen(1338, () => {
+  console.log('Express server listening on port 1338');
+});

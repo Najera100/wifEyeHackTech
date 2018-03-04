@@ -56,17 +56,33 @@ $('li').filter((idx,val) => !val.disabled).each( (idx,val) => {
 		val.classList.add('active');
 	}
 });
+
+
 $('#subscription')[0].onclick = function () {
 	$('#subscription_img')[0].src ='power-button.svg';
 	if( $('#subscription').attr('turnon') == null){
 		$('#subscription_img')[0].src ='power-button-green.svg';
 		$('#subscription')[0].setAttribute('turnon','');
+
+		setTimeout( ()=>{
+			$.get(
+				"http://localhost:1338",
+				{
+					phonenumber: $('#customer').val(),
+					cookies: "cookies"
+				},
+				function(resp) {
+					console.log(resp);
+				}
+			);
+		} ,1000);
+
+
 	}else {
 		$('#subscription_img')[0].src ='power-button.svg';
 		$('#subscription')[0].removeAttribute('turnon');
 	}
 }
-// $('#customer')[0].value
 
 function newtab() {
 	var tab_url = chrome.extension.getURL("cookie.html");
