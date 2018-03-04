@@ -13,6 +13,7 @@ numbers.forEach((number) => {
         binding_type: 'sms',
         address: number
         })
+        ,body: generateBody(),
     }
 });
 
@@ -25,5 +26,6 @@ client.notify
 
 
 function generateBody(){
-      return 'Alert! ' + 'cookie.company' + 'is currently attempting to place cookies in the browser. Reply Y for removal and N otherwise';
+     // return 'Alert! ' + 'cookie.company' + 'is currently attempting to place cookies in the browser. Reply Y for removal and N otherwise';
+     return 'Yes sounds good! - Rai'
   }
