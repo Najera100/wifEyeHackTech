@@ -2,6 +2,11 @@ var doc = document.getElementById('p');
 
 db = [];
 
+<<<<<<< HEAD
+chrome.runtime.onMessage.addListener(function (a,b,c){
+   debugger;
+});
+=======
 function getJson(url) {
    var xhr = new XMLHttpRequest(); // a new request
    xhr.open("GET", url, true);
@@ -54,3 +59,4 @@ chrome.windows.getAll({ "populate": true }, function (windows) {
       }
    }
 });
+>>>>>>> e49de6d35ad65585d08b6ba26a9344eeea1c3d2f

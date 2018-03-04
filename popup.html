@@ -1,22 +1,52 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Wif-eye</title>
-    <meta charset="utf8"></meta>
-		<link href="css/bootstrap.min.css" rel="stylesheet"/>
-		<link href="css/common.css" rel="stylesheet"/>
-  </head>
-  <body>
-    <h1>Wif-eye</h1>
-    <div id = 'content'></div>
+  
+<head>
+  <title>Wif-eye</title>
+  <meta charset="utf8"></meta>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/common.css" rel="stylesheet" />
+  <style>
+    h1 {
+      text-align: center;
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
 
-	  <!-- external libraries -->
-	  <script src="javascript/lib/jquery-3.2.1.js"></script>
-	  <script src="javascript/lib/d3.js"></script>
-	  <script src="javascript/lib/bootstrap.bundle.min.js"></script>
-	  <script src="javascript/cookie.js"></script>
-	  <script src="javascript/viz.js"></script>
-	  <script src="javascript/popup.js"></script>
-	</body>
+<body>
+  <h1>Wif-eye</h1>
+
+  <div id='trackers'>
+    <p>
+      Who knows you are visiting this page besides
+    </p>
+  </div>
+
+  <div id='activity'>
+    <p>
+      <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;" >
+      What you are doing right now:
+    </p>
+  </div>
+
+  <div id='usage_count'>
+      <p>
+        You used Wif-eye 0 times;
+      </p>
+    </div>
+
+  <div id='content'></div>
+
+  <button id='tabmode'> Click me to See All Going Trackings</button>
+
+  <!-- external libraries -->
+  <script src="javascript/lib/jquery-3.2.1.js"></script>
+  <script src="javascript/lib/d3.js"></script>
+  <script src="javascript/lib/bootstrap.bundle.min.js"></script>
+  <script src="javascript/popup.js"></script>
+</body>
 
 </html>
