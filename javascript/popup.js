@@ -3,6 +3,12 @@ function binarySplit(s, sep) {
 	return [s.substring(0, i), s.substring(i+1)];
 }
 
+function getDomainName(s) {
+	var li = s.split(".");
+	var strlen = li.length;
+	return li[strlen - 2] + '.' + li[strlen - 1];
+}
+
 function getHostname(s) {
 	var t = document.createElement('a');
   t.href = s;
@@ -14,7 +20,6 @@ function getCookieKeyValuePair(request) {
 		return binarySplit(d, '=');
 	});
 }
-
 
 chrome.tabs.getSelected(null, function(tab) {
 			var domains = new Set();
@@ -40,10 +45,9 @@ chrome.tabs.getSelected(null, function(tab) {
 								if(cookie.value == value)
 									console.log(cookie);
 								// if cookie matches the key-value pair and it's hostname is not the current tab's hostname
-								if(cookie.value == value && !currentTabHostname.includes(cookie.domain) && !cookie.domain.includes(currentTabHostname)) {
-									domains.add(cookie.domain);
+								if(cookie.value == value && !(getDomainName(currentTabHostname) == getDomainName(cookie.domain))){
+									domains.add(getDomainName(cookie.domain));
 								}
-
 							}
 				  	});
 				  });
@@ -67,5 +71,5 @@ chrome.tabs.getSelected(null, function(tab) {
 	      	d3.select('#content').append('p')
 					  .text(domain);
 				});
-      }, 1000);
+      }, 500);
 });
