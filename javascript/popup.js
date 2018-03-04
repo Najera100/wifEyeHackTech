@@ -41,9 +41,16 @@ button.onclick = newtab;
 console.log('tab-code is running!');
 
 // Tab OnClick
-$('li a').each(anchor=>{
-	anchor.onclick = function (ev) {
-		debugger;
+$('li a').each( (idx,val) => {
+	val.onclick = function (ev) {
+		$('li a').each( (idx,val) => { 
+			debugger;
+			$(`#${val.id}`)
+			val.setAttribute('hidden','');
+			val.classList.remove('active');
+		});
+		val.removeAttribute('hidden');
+		val.classList.add('active');
 	}
 });
 
