@@ -41,15 +41,18 @@ button.onclick = newtab;
 console.log('tab-code is running!');
 
 // Tab OnClick
-$('li a').each( (idx,val) => {
+$('li').filter((idx,val) => !val.disabled).each( (idx,val) => {
 	val.onclick = function (ev) {
-		$('li a').each( (idx,val) => { 
-			debugger;
-			$(`#${val.id}`)
-			val.setAttribute('hidden','');
+		$('li').filter((idx,val) => !val.disabled).each( (idx,val) => { 
+			if( $(`#tab_${val.id}`).length != 0 ){
+				$(`#tab_${val.id}`)[0].setAttribute('hidden','');
+			}
 			val.classList.remove('active');
 		});
-		val.removeAttribute('hidden');
+
+		if( $(`#tab_${val.id}`).length != 0 ){
+			$(`#tab_${val.id}`)[0].removeAttribute('hidden');
+		}
 		val.classList.add('active');
 	}
 });
@@ -179,7 +182,7 @@ chrome.tabs.getSelected(null, function(tab) {
       	console.log(domainCounts);
       	if($.isEmptyObject(domainCounts)) {
       		d3.select('#tab_current').remove();
-      		d3.select('#tab_no_cookie').attr("hidden", null);
+				d3.select('#tab_current2').attr("hidden", null).attr('id','tab_current');
       		return;
       	}
 
