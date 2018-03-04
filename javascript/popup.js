@@ -33,7 +33,7 @@ function returnCount() {
 }
 
 var count_para = document.getElementById('usage_count');
-count_para.firstElementChild.innerHTML = `You ❤️ Wif-eye <b>${returnCount()}<b> times.`;
+count_para.firstElementChild.innerHTML = `You ❤️ Wif-eye <b>${returnCount()}</b> times.`;
 
 // BUTTON
 var button = document.getElementById('tabmode');
@@ -146,11 +146,6 @@ chrome.tabs.getSelected(null, function(tab) {
 							}
 				  	});
 				  });
-			  	
-			  	/*request.split(' ').map(function(kv) {
-				  	d3.select('#content').append('p')
-				  		.text(kv);
-			  	});*/
 			  }
 			);
 
@@ -175,6 +170,15 @@ chrome.tabs.getSelected(null, function(tab) {
 				    donut: {
 				        title: "Donut meets cookies"
 				    },
+				    tooltip: {
+        		format: {
+            	value: function (value, ratio, id) {
+            		// Show count of cookies for the same domain on tooltip.
+                var format = d3.format(',');
+                return format(value);
+            }
+        }
+    }
 				});
 
       	domains.forEach(function(domain) {

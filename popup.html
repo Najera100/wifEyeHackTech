@@ -13,6 +13,7 @@
       margin: 0;
       height: 700px;
       width: 600px;
+      overflow: hidden;
     }
 
     body header h1 {
@@ -37,7 +38,7 @@
     }
 
     p {
-      overflow: scroll;
+      overflow: hidden;
     }
 
     div#usage_count {
@@ -51,6 +52,7 @@
 
     #content {
       float: left;
+      text-align: center;
       width: calc(100% - 400px);
     }
 
@@ -61,6 +63,7 @@
 
     body footer {
       clear: both;
+      font-size: smaller;
     }
   </style>
 </head>
@@ -89,7 +92,8 @@
 
   <section id="tab_current">
     <div id='trackers'>
-      <p class="alert alert-warning" role="alert" >
+      <p class="alert alert-warning" role="alert">
+        <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;">
         Who knows you are visiting this page besides
       </p>
       <div id='content'></div>
@@ -98,11 +102,11 @@
       </div>
     </div>
 
-    <div id='activity' style="clear:both;">
+    <!-- <div id='activity' style="clear:both;">
       <p>
         <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> What you are doing right now:
       </p>
-    </div>
+    </div> -->
   </section>
 
   <footer>
