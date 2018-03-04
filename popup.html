@@ -70,55 +70,69 @@
       widows: 400px;
     }
 
+    #tab_total_view {
+      text-align: center;
+    }
+
     .checkmark__circle {
-	  stroke-dasharray: 166;
-	  stroke-dashoffset: 166;
-	  stroke-width: 2;
-	  stroke-miterlimit: 10;
-	  stroke: #7ac142;
-	  fill: none;
-	  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-	}
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: #7ac142;
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
 
-	.checkmark {
-	  width: 56px;
-	  height: 56px;
-	  border-radius: 50%;
-	  display: block;
-	  stroke-width: 2;
-	  stroke: #fff;
-	  stroke-miterlimit: 10;
-	  margin: 10% auto;
-	  box-shadow: inset 0px 0px 0px #7ac142;
-	  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-	}
+    .checkmark {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 2;
+      stroke: #fff;
+      stroke-miterlimit: 10;
+      margin: 10% auto;
+      box-shadow: inset 0px 0px 0px #7ac142;
+      animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    }
 
-	.checkmark__check {
-	  transform-origin: 50% 50%;
-	  stroke-dasharray: 48;
-	  stroke-dashoffset: 48;
-	  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-	}
+    .checkmark__check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
 
-	@keyframes stroke {
-	  100% {
-	    stroke-dashoffset: 0;
-	  }
-	}
-	@keyframes scale {
-	  0%, 100% {
-	    transform: none;
-	  }
-	  50% {
-	    transform: scale3d(1.1, 1.1, 1);
-	  }
-	}
-	@keyframes fill {
-	  100% {
-	    box-shadow: inset 0px 0px 0px 30px #7ac142;
-	  }
-	}
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
 
+    @keyframes scale {
+      0%,
+      100% {
+        transform: none;
+      }
+      50% {
+        transform: scale3d(1.1, 1.1, 1);
+      }
+    }
+
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0px 0px 0px 30px #7ac142;
+      }
+    }
+
+
+    #tab_total_view a img {
+      width: 240px;
+      height: 240px;
+      margin: 10px;
+      transition: 0.5s ease;
+    }
   </style>
 </head>
 
@@ -131,9 +145,9 @@
           <a class="nav-link" href="#"> Current </a>
         </li>
         <li class="nav-item" id='total_view'>
-          <a class="nav-link" href="#">TotalStats</a>
+          <a class="nav-link" href="#"> Subscription </a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link disabled" href="#">Blocked(Comming Soon)</a>
         </li>
       </ul>
@@ -147,7 +161,8 @@
   <section id="tab_current">
     <div id='trackers'>
       <p class="alert alert-warning" role="alert">
-        <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> Who knows you are visiting this page besides
+        <img title='<div>Icons made by <a href="https://www.flaticon.com/authors/bogdan-rosu" title="Bogdan Rosu">Bogdan Rosu</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>'
+          src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> Who knows you are visiting this page besides
       </p>
       <div id='content'></div>
       <div class='chart'>
@@ -161,13 +176,30 @@
       <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
       <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
     </svg>
-    <center><p>This site has no third party cookies.</p></center>
+    <center>
+      <p>This site has no third party cookies.</p>
+    </center>
   </section>
 
   <section id='tab_total_view' hidden>
+
+    <a id='subscription'>
+      <img id='subscription_img' src="power-button.svg">
+    </a>
+
     <div id='activity' style="clear:both;">
-      <p>
-        <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> What you are doing right now:
+      <p class="alert alert-success" role="alert">
+        <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> Put your phone number & Click Start to Subscribe
+        <span class="input-group mb-3" 
+          style=" margin-top:10px;
+                  display: flex;
+                 align-items: center;
+                 justify-content: center;">
+          <span class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">📞</span>
+            <input required id="customer" type="tel" placeholder="Telephone Number" pattern="^[0-9\-\+\s\(\)]*$">
+          </span>
+        </span>
       </p>
     </div>
   </section>

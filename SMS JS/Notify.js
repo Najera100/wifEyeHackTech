@@ -26,7 +26,7 @@ numbers.forEach((number) => {
       };
       
       client.notify
-        .services('ISxxxxxxxxxxxxxxxxxxxxxxxxx')
+        .services('IS4aeae6c6a684ddb228bc663ba59ef14d')
         .notifications
         .create(notificationOpts)
         .then(notification => console.log(notification.sid))
@@ -34,5 +34,5 @@ numbers.forEach((number) => {
 });
 
   function generateBody(){
-      return `Such and such app is tryign to do blah.... `;
+      return `Alert! Bovada.lv has attempted to store cookies on your device.`;
   }

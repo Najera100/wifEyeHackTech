@@ -56,6 +56,17 @@ $('li').filter((idx,val) => !val.disabled).each( (idx,val) => {
 		val.classList.add('active');
 	}
 });
+$('#subscription')[0].onclick = function () {
+	$('#subscription_img')[0].src ='power-button.svg';
+	if( $('#subscription').attr('turnon') == null){
+		$('#subscription_img')[0].src ='power-button-green.svg';
+		$('#subscription')[0].setAttribute('turnon','');
+	}else {
+		$('#subscription_img')[0].src ='power-button.svg';
+		$('#subscription')[0].removeAttribute('turnon');
+	}
+}
+// $('#customer')[0].value
 
 function newtab() {
 	var tab_url = chrome.extension.getURL("cookie.html");
