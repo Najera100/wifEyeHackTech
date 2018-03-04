@@ -40,6 +40,13 @@ var button = document.getElementById('tabmode');
 button.onclick = newtab;
 console.log('tab-code is running!');
 
+// Tab OnClick
+$('li a').each(anchor=>{
+	anchor.onclick = function (ev) {
+		debugger;
+	}
+});
+
 function newtab() {
 	var tab_url = chrome.extension.getURL("cookie.html");
 	console.log(tab_url);
