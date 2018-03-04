@@ -7,43 +7,94 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/common.css" rel="stylesheet" />
   <style>
-    h1 {
-      text-align: center;
+    html,
+    body {
+      margin: 0;
+      height: 600px;
+      width: 600px;
     }
+
+    body header h1 {
+      float: right;
+      text-align: center;
+      color: aliceblue;
+    }
+
+    body header h1 img {
+      position: relative;
+      width: 1em;
+      top: -5px;
+    }
+
+    body header nav {
+      clear: both;
+    }
+
+    body header nav ul li {}
+
     img {
       width: 100%;
     }
+
     p {
       overflow: scroll;
+    }
+
+    div#usage_count {
+      float: right;
+    }
+
+    header {
+      width: 100%;
+      margin: 0;
     }
   </style>
 </head>
 
 <body>
-  <h1>Wif-eye</h1>
 
-  <div id='trackers'>
-    <p>
-      Who knows you are visiting this page besides
-    </p>
-    <div id='content'></div>
-  </div>
+  <header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"> Current </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">TotalStats</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Blocked(Comming Soon)</a>
+        </li>
+      </ul>
+      <h1 class="brand">Wif-eye
+        <img src="icon128x128.png"> </h1>
+      <!-- Navbar content -->
+    </nav>
 
-  <div id='activity'>
-    <p>
-      <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;" >
-      What you are doing right now:
-    </p>
-  </div>
+  </header>
 
-  <div id='usage_count'>
+  <section>
+    <div id='trackers'>
       <p>
-        You used Wif-eye 0 times;
+        Who knows you are visiting this page besides
+      </p>
+      <div id='content'></div>
+    </div>
+
+    <div id='activity'>
+      <p>
+        <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> What you are doing right now:
       </p>
     </div>
 
+    <button hidden id='tabmode'> Click me to See All Going Trackings</button>
+  </section>
 
-  <button id='tabmode'> Click me to See All Going Trackings</button>
+  <div id='usage_count'>
+    <p>
+      You used Wif-eye 0 times;
+    </p>
+  </div>
 
   <!-- external libraries -->
   <script src="javascript/lib/jquery-3.2.1.js"></script>

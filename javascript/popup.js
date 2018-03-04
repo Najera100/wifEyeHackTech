@@ -33,7 +33,7 @@ function returnCount() {
 }
 
 var count_para = document.getElementById('usage_count');
-count_para.firstElementChild.innerHTML = `You used Wif-eye <b>${returnCount()}<b> times;`;
+count_para.firstElementChild.innerHTML = `You ❤️ Wif-eye <b>${returnCount()}<b> times.`;
 
 // BUTTON
 var button = document.getElementById('tabmode');
@@ -106,7 +106,6 @@ chrome.tabs.getSelected(null, function(tab) {
 						info.forEach(d => d3.select('#content').append('p').text(JSON.stringify(d.httpOnly)));
 					});
 				},2000);*/
-
 
 			  	console.log(request);
 			  	var kvs = getCookieKeyValuePair(request);
