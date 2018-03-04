@@ -11,7 +11,7 @@
     html,
     body {
       margin: 0;
-      height: 600px;
+      height: 700px;
       width: 600px;
     }
 
@@ -24,7 +24,6 @@
     body header h1 img {
       position: relative;
       width: 1em;
-      top: -5px;
     }
 
     body header nav {
@@ -48,6 +47,20 @@
     header {
       width: 100%;
       margin: 0;
+    }
+
+    #content {
+      float: left;
+      width: calc(100% - 400px);
+    }
+
+    #donutchart {
+      width: 400px;
+      float: right;
+    }
+
+    body footer {
+      clear: both;
     }
   </style>
 </head>
@@ -74,9 +87,9 @@
 
   </header>
 
-  <section>
+  <section id="tab_current">
     <div id='trackers'>
-      <p>
+      <p class="alert alert-warning" role="alert" >
         Who knows you are visiting this page besides
       </p>
       <div id='content'></div>
@@ -85,19 +98,22 @@
       </div>
     </div>
 
-    <div id='activity'>
+    <div id='activity' style="clear:both;">
       <p>
         <img src="Logomakr_6l9x09.png" style="width: 20px; height: 20px;"> What you are doing right now:
       </p>
     </div>
-
-
   </section>
-  <div id='usage_count'>
-    <p>
-      You used Wif-eye 0 times;
-    </p>
-  </div>
+
+  <footer>
+    <div id='usage_count'>
+      <p>
+        You used Wif-eye 0 times;
+      </p>
+    </div>
+  </footer>
+
+
 
   <button hidden id='tabmode'> Click me to See All Going Trackings</button>
 
