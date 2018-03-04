@@ -94,12 +94,12 @@ chrome.tabs.getSelected(null, function(tab) {
 
 				globals.current_tab = tab;
 				setTackerTitle();
-
+				/*
 				setTimeout(()=>{
 					chrome.cookies.getAll({ url: `http://${globals.hostname}` }, (info) => {
-						info.forEach(d => d3.select('#content').append('p').text(d));
+						info.forEach(d => d3.select('#content').append('p').text(JSON.stringify(d.httpOnly)));
 					});
-				},2000);
+				},2000);*/
 
 
 			  	console.log(request);
