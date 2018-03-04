@@ -89,8 +89,22 @@ function getCookieKeyValuePair(request) {
 	});
 }
 
+// enable popover
+function EnablePopOver() {
+	$(function () {
+	  $('[data-toggle="popover"]').popover({
+	  	placement: 'auto',
+	  	trigger: 'hover',
+	  	html: true
+	  })
+	})
+}
+
+EnablePopOver();
+
 chrome.tabs.getSelected(null, function(tab) {
 			var domains = new Set();
+			var domainCounts = {};
       console.log(tab);
       var currentTabHostname = getHostname(tab.url);
       console.log(currentTabHostname);
@@ -124,7 +138,10 @@ chrome.tabs.getSelected(null, function(tab) {
 								if(cookie.value == value)
 									console.log(cookie);
 								// if cookie matches the key-value pair and it's hostname is not the current tab's hostname
-								if(cookie.value == value && !(getDomainName(currentTabHostname) == getDomainName(cookie.domain))){
+
+								var cookieDomainName = getDomainName(cookie.domain);
+								if(cookie.value == value && !(getDomainName(currentTabHostname) == cookieDomainName)){
+									domainCounts[cookieDomainName] = (domainCounts[cookieDomainName] || 0) + 1;
 									domains.add(getDomainName(cookie.domain));
 								}
 							}
@@ -146,9 +163,32 @@ chrome.tabs.getSelected(null, function(tab) {
 
       setTimeout(function() {
       	console.log(domains);
+      	console.log(domainCounts);
+      	var chart = c3.generate({
+      			bindto: '#donutchart',
+				    data: {
+				        columns: Object.entries(domainCounts),
+				        type : 'donut',
+				        //onclick: function (d, i) { console.log("onclick", d, i); },
+				        //onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+				        //onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+				    },
+				    donut: {
+				        title: "Donut meets cookies"
+				    },
+				});
+
       	domains.forEach(function(domain) {
-	      	d3.select('#content').append('p')
+	      	var content = d3.select('#content');
+	      	content.append('div')
+	      		.attr("class", "badge badge-primary")
+	      		.attr("data-toggle", "popover")
+					  .attr("data-content", "some text")
 					  .text(domain);
+					  
+					content.append("br");
+					
+					EnablePopOver();
 				});
       }, 500);
 });

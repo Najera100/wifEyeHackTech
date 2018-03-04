@@ -5,6 +5,7 @@
   <title>Wif-eye</title>
   <meta charset="utf8"></meta>
   <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/c3.min.css" rel="stylesheet" />
   <link href="css/common.css" rel="stylesheet" />
   <style>
     h1 {
@@ -39,14 +40,18 @@
     </div>
 
   <div id='content'></div>
-
+  <div class='chart'>
+		<div id='donutchart'></div>
+	</div>
   <button id='tabmode'> Click me to See All Going Trackings</button>
 
   <!-- external libraries -->
   <script src="javascript/lib/jquery-3.2.1.js"></script>
-  <script src="javascript/lib/d3.js"></script>
+  <script src="javascript/lib/d3.min.3.5.17.js"></script>
+  <script src="javascript/lib/c3.min.js"></script>
   <script src="javascript/lib/bootstrap.bundle.min.js"></script>
   <script src="javascript/popup.js"></script>
+
 </body>
 
 </html>
