@@ -103,6 +103,11 @@ function getCookieKeyValuePair(request) {
 	});
 }
 
+function parseWikipediaResponseForExtract(resp) {
+	var pages = resp.query.pages;
+	return Object.values(pages)[0].extract;
+}
+
 // enable popover
 function EnablePopOver() {
 	$(function () {
@@ -177,6 +182,9 @@ chrome.tabs.getSelected(null, function(tab) {
       		d3.select('#tab_no_cookie').attr("hidden", null);
       		return;
       	}
+
+      	
+
       	var chart = c3.generate({
       			bindto: '#donutchart',
 				    data: {
@@ -201,16 +209,35 @@ chrome.tabs.getSelected(null, function(tab) {
 				});
 
       	domains.forEach(function(domain) {
-	      	var content = d3.select('#content');
-	      	content.append('div')
-	      		.attr("class", "badge badge-primary")
-	      		.attr("data-toggle", "popover")
-					  .attr("data-content", "some text")
-					  .text(domain);
-					  
-					content.append("br");
-					
-					EnablePopOver();
+      		// Get descryption about domain from wikipedia.
+      		var s = `https://en.wikipedia.org/w/api.php?&action=query&prop=extracts&exintro=&explaintext=&format=json&titles=${domain.split(".")[0]}`;
+      		$.get(
+	      		s, 
+	      		{paramOne: 1, paramX: 'abc'}, 
+	      		function(data) { 
+	      			var extract = parseWikipediaResponseForExtract(data);
+	      			var content = d3.select('#content');
+			      	content.append('span')
+			      		.attr("class", "badge badge-primary")
+			      		.attr("data-toggle", "popover")
+							  .attr("data-content", extract)
+							  .on('mouseover', function(d) {
+							  	d3.select(this).classed("badge-primary", false);
+							  	d3.select(this).classed("badge-secondary", true);
+							  })
+							  .on('mouseout', function(d) {
+							  	d3.select(this).classed("badge-primary", true);
+							  	d3.select(this).classed("badge-secondary", false);
+							  })
+							  .text(domain);
+							  
+							content.append("br");
+							
+							EnablePopOver();
+	      		}
+      		);
+
+	      	
 				});
       }, 500);
 });
