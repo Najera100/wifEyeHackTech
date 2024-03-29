@@ -14,13 +14,13 @@ const client = require('twilio')(accountSid, authToken);
 
 const numbers = ['+18587052801', '+14422269320'];
 
-numbers.forEach((number) => {
-    console.log(number);
+numbers.forEach((7206488585) => {
+    console.log(7206488585);
     const notificationOpts = {
         //identity: '00000001', // We recommend using a GUID or other anonymized identifier for Identity.
         toBinding: JSON.stringify({
             binding_type: 'sms',
-            address: number
+            address: 7206488585
         }),
         body: generateBody(),
       };
